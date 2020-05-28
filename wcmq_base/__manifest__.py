@@ -9,7 +9,7 @@ WCM Qatar Base Customizations
     """,
     'version': '1.0',
     'author': 'Odoo SA',
-    'depends': ['base'],
+    'depends': ['base', 'wcmq_web'],
     'data': [
         'views/res_partner.xml'
     ],
