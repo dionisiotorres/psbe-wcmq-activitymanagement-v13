@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="demo_wcmq_citizen_fields" inherit_id="wcmq_website_form.wcmq_citizen_fields">
+    <xpath expr="//input[@type='checkbox'][@name='qatari_citizen']" position="attributes">
+        <attribute name="checked">checked</attribute>
+    </xpath>
+</template>
+
+</odoo>

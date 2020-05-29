@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<function model="ir.model.fields" name="formbuilder_whitelist">
+    <value>hr.applicant</value>
+    <value eval="[
+        'partner_firstname',
+        'partner_middlename',
+        'partner_lastname',
+        'edu_partner_country_id',
+        'edu_partner_id',
+        'qatari_citizen',
+        'mother_qatari_citizen',
+        'mother_qatari_citizen_passport',
+        'expected_graduation_year',
+        'team_member_1_fullname',
+        'team_member_1_grade',
+        'team_member_1_phone',
+        'team_member_1_email',
+        'team_member_2_fullname',
+        'team_member_2_grade',
+        'team_member_2_phone',
+        'team_member_2_email',
+        'team_member_3_fullname',
+        'team_member_3_grade',
+        'team_member_3_phone',
+        'team_member_3_email',
+        'team_member_4_fullname',
+        'team_member_4_grade',
+        'team_member_4_phone',
+        'team_member_4_email',
+        'team_member_5_fullname',
+        'team_member_5_grade',
+        'team_member_5_phone',
+        'team_member_5_email'
+    ]"/>
+</function>
+
+</odoo>
