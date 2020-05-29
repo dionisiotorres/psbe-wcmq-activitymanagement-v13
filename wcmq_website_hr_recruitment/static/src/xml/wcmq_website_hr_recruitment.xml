@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+<t t-name="WCMQ_website_hr_recruitment.abstractSubmissionTeamMember">
+    <div class="form-group row">
+        <div class="col-md-3">
+            <label class="col-form-label" t-attf-for="team_member_{{ index }}_fullname">Member <t t-esc="index"/></label>
+        </div>
+        <div class="form-field col-md-6 o_website_form_required">
+            <input type="text" t-attf-name="team_member_{{ index }}_fullname" required=""
+                class="form-control o_website_form_input"
+                placeholder="Full name"
+            />
+        </div>
+        <div class="form-field col-md-3 o_website_form_required">
+            <select t-attf-name="team_member_{{ index }}_grade" required=""
+                class="form-control o_website_form_input"
+            >
+                <option value="" disabled="" selected="">Select a Grade</option>
+                <option value="1">Grade 1</option>
+                <option value="2">Grade 2</option>
+                <option value="3">Grade 3</option>
+                <option value="4">Grade 4</option>
+            </select>
+        </div>
+        <div class="form-field offset-md-3 col-md-4 o_website_form_required">
+            <input type="text" t-attf-name="team_member_{{ index }}_phone" required=""
+                class="form-control o_website_form_input"
+                placeholder="Phone number"
+            />
+        </div>
+        <div class="form-field col-md-5 o_website_form_required">
+            <input type="text" t-attf-name="team_member_{{ index }}_email" required=""
+                class="form-control o_website_form_input"
+                placeholder="Email"
+            />
+        </div>
+    </div>
+</t>
+
+</templates>

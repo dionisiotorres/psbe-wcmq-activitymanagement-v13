@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="wcmq_abstract_submission_fields" name="WCMQ Abstract Submission Fields">
+    <t t-if="job.has_abstract_submission">
+        <div class="form-group row form-field">
+            <div class="col-md-3 text-right">
+                <label class="col-form-label" for="team_member_count"># Team Members</label>
+            </div>
+            <div class="col-md-3 o_website_form_required">
+                <input type="number" name="team_member_count" required=""
+                    min="1" max="5" value="1"
+                    class="form-control o_website_form_input"
+                />
+            </div>
+        </div>
+        <div class="wcmq_abstract_submission">
+        </div>
+    </t>
+</template>
+
+<template id="apply" inherit_id="website_hr_recruitment.apply">
+    <xpath expr="//form" position="replace">
+
+        <!-- NOTE: This is need to make work the editor with t-call elements -->
+        <div t-ignore="true">
+            <form id="hr_recruitment_form" action="/website_form/" method="post" nctype="multipart/form-data"
+                data-model_name="hr.applicant"
+                data-success_page="/job-thank-you"
+                hide-change-model="true"
+                class="s_website_form"
+            >
+
+                <t t-call="wcmq_website_form.wcmq_partner_name_fields"/>
+                <t t-call="wcmq_website_form.wcmq_email_fields"/>
+                <t t-call="wcmq_website_form.wcmq_edu_partner_fields"/>
+                <t t-call="wcmq_website_form.wcmq_citizen_fields"/>
+                <t t-call="wcmq_website_form.wcmq_expected_graduation_year_field"/>
+                <t t-call="wcmq_website_hr_recruitment.wcmq_abstract_submission_fields"/>
+
+                <div class="form-group row form-field d-none">
+                    <div class="col-lg-3 col-md-4">
+                        <label class="col-form-label" for="job_id">Job</label>
+                    </div>
+                    <div class="col-lg-7 col-md-8">
+                        <input type="hidden" class="form-control o_website_form_input" name="job_id"/>
+                    </div>
+                </div>
+                <div class="form-group row form-field d-none">
+                    <div class="col-lg-3 col-md-4">
+                        <label class="col-form-label" for="department_id">Department</label>
+                    </div>
+                    <div class="col-lg-7 col-md-8">
+                        <input type="hidden" class="form-control o_website_form_input" name="department_id"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
+                        <a href="#" role="button" class="btn btn-primary btn-lg o_website_form_send">Submit</a>
+                        <span id="o_website_form_result"></span>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </xpath>
+</template>
+
+</odoo>

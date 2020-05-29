@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="hr_applicant_view_form" model="ir.ui.view">
+    <field name="name">Jobs - Recruitment Form</field>
+    <field name="model">hr.applicant</field>
+    <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='active']" position="after">
+            <field name="job_has_abstract_recruitment" invisible="1"/>
+        </xpath>
+        <xpath expr="//separator[1]" position="before">
+            <group name="team_members" string="Team Members"
+                attrs="{
+                    'invisible': [('job_has_abstract_recruitment', '=', False)]
+                }"
+            >
+                <group name="team_member_1" string="Team Member 1">
+                    <field name="team_member_1_fullname" string="Fullname"/>
+                    <field name="team_member_1_grade" string="Grade"/>
+                    <field name="team_member_1_phone" string="Phone"/>
+                    <field name="team_member_1_email" string="Email"/>
+                </group>
+                <group name="team_member_1" string="Team Member 2">
+                    <field name="team_member_2_fullname" string="Fullname"/>
+                    <field name="team_member_2_grade" string="Grade"/>
+                    <field name="team_member_2_phone" string="Phone"/>
+                    <field name="team_member_2_email" string="Email"/>
+                </group>
+                <group name="team_member_1" string="Team Member 3">
+                    <field name="team_member_3_fullname" string="Fullname"/>
+                    <field name="team_member_3_grade" string="Grade"/>
+                    <field name="team_member_3_phone" string="Phone"/>
+                    <field name="team_member_3_email" string="Email"/>
+                </group>
+                <group name="team_member_1" string="Team Member 4">
+                    <field name="team_member_4_fullname" string="Fullname"/>
+                    <field name="team_member_4_grade" string="Grade"/>
+                    <field name="team_member_4_phone" string="Phone"/>
+                    <field name="team_member_4_email" string="Email"/>
+                </group>
+                <group name="team_member_1" string="Team Member 5">
+                    <field name="team_member_5_fullname" string="Fullname"/>
+                    <field name="team_member_5_grade" string="Grade"/>
+                    <field name="team_member_5_phone" string="Phone"/>
+                    <field name="team_member_5_email" string="Email"/>
+                </group>
+            </group>
+        </xpath>
+    </field>
+</record>
+
+</odoo>
