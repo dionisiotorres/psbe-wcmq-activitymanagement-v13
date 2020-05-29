@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+<t t-name="WCMQ_website_form.eduPartnerSelect">
+    <div class="col-md-6 form-field">
+        <select name="edu_partner_id" required=""
+            class="form-control o_website_form_input"
+            placeholder="Institution"
+        >
+            <option value="" disabled="" selected="">Institution</option>
+            <option value="0">School Not Found</option>
+            <t t-foreach="partners" t-as="partner">
+                <option t-att-value="partner.id">
+                    <t t-esc="partner.display_name"/>
+                </option>
+            </t>
+        </select>
+    </div>
+</t>
+
+</templates>
