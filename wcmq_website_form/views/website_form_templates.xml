@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="wcmq_partner_name_fields" name="WCM-Q Partner Name Fields">
+    <div class="form-group row form-field">
+        <div class="col-md-3 text-right">
+            <label class="col-form-label" for="partner_firstname">Your Name</label>
+        </div>
+        <div class="col-md-3 form-field o_website_form_required">
+            <input type="text" name="partner_firstname" required=""
+                class="form-control o_website_form_input"
+                placeholder="First name"
+            />
+        </div>
+        <div class="col-md-3 form-field">
+            <input type="text" name="partner_middlename"
+                class="form-control o_website_form_input"
+                placeholder="Middle name"
+            />
+        </div>
+        <div class="col-md-3 form-field o_website_form_required">
+            <input type="text" name="partner_lastname" required=""
+                class="form-control o_website_form_input"
+                placeholder="Last name"
+            />
+        </div>
+    </div>
+</template>
+
+<template id="wcmq_email_fields" name="WCM-Q Email Fields">
+    <div class="form-group row form-field o_website_form_required" data-check-input-content="equal">
+        <div class="col-md-3 text-right">
+            <label class="col-form-label" for="partner_email">Your Email</label>
+        </div>
+        <div class="form-field col-md-4 o_website_form_required">
+            <input type="text" name="partner_email" required=""
+                class="form-control o_website_form_input"
+                placeholder="Email"
+            />
+        </div>
+        <div class="form-field offset-md-1 col-md-4 o_website_form_required">
+            <input type="text" name="confirm_partner_email" required=""
+                class="form-control o_website_form_input"
+                placeholder="Confirm email"
+            />
+        </div>
+    </div>
+</template>
+
+<template id="wcmq_edu_partner_fields" name="WCM-Q Education Partner Fields">
+    <t t-if="edu_partners_by_country">
+        <script type="text/javascript" id="edu_partners_by_country">
+            if (!odoo.wcmq_website_form) {
+                odoo.wcmq_website_form = {};
+            }
+            odoo.wcmq_website_form.edu_partners_by_country = <t t-raw="edu_partners_by_country"/>;
+        </script>
+
+        <div class="form-group row form-field">
+            <div class="col-md-3 text-right">
+                <label class="col-form-label" for="edu_partner_county_id">School / University</label>
+            </div>
+            <div class="col-md-3 form-field o_website_form_required">
+                <select name="edu_partner_country_id" required=""
+                    class="form-control o_website_form_input"
+                    placeholder="Country"
+                >
+                    <option value="" disabled="" selected="">Country</option>
+                    <t t-foreach="countries" t-as="country">
+                        <option t-att-value="country.id">
+                            <t t-esc="country.display_name"/>
+                        </option>
+                    </t>
+                </select>
+            </div>
+        </div>
+
+    </t>
+</template>
+
+<template id="wcmq_citizen_fields" name="WCM-Q Citizen Fields">
+    <div class="form-group form-field">
+        <div id="qatari_citizen"
+            class="form-field row"
+            data-toggle="invisibility-checkbox"
+            data-invisibility-check-inverse="true"
+            href="#mother_qatari_citizen"
+        >
+            <div class="col-md-3 text-right">
+                <label class="col-form-label" for="qatari_citizen">Are You a Qatari Citizen ?</label>
+            </div>
+            <div class="col-md-1">
+                <input type="checkbox" name="qatari_citizen"
+                    class="o_website_form_input"
+                />
+            </div>
+        </div>
+        <div id="mother_qatari_citizen"
+            class="form-field row"
+            data-toggle="invisibility-checkbox"
+            data-invisibility-check-required="true"
+            href="#mother_qatari_citizen_passport"
+        >
+            <div class="col-md-3 text-right">
+                <label class="col-form-label" for="mother_qatari_citizen">Is Your Mother a Qatari Citizen ?</label>
+            </div>
+            <div class="col-md-1">
+                <input type="checkbox" name="mother_qatari_citizen"
+                    class="o_website_form_input"
+                />
+            </div>
+        </div>
+        <div id="mother_qatari_citizen_passport"
+            data-invisibility-check-required="true"
+            class="form-field row"
+        >
+            <div class="col-md-3 text-right">
+                <label class="col-form-label" for="mother_qatari_citizen_passport">Upload a Copy of Your Mother's ID or Passport</label>
+            </div>
+            <div class="col-md-9">
+                <input type="file" name="mother_qatari_citizen_passport"
+                    class="form-control o_website_form_input"
+                />
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="wcmq_expected_graduation_year_field" name="WCM-Q Expected Graduation Year Fields">
+    <div class="form-group row form-field">
+        <div class="col-md-3 text-right">
+            <label class="col-form-label" for="expected_graduation_year">Expected Year of Graduation</label>
+        </div>
+        <div class="col-md-3 o_website_form_required">
+            <select name="expected_graduation_year" required=""
+                class="form-control o_website_form_input"
+            >
+                <t t-set="cy" t-value="datetime.datetime.today().year"/>
+                <t t-foreach="range(cy, cy + 7)" t-as="y">
+                    <option t-att-value="y"><t t-esc="y"/></option>
+                </t>
+            </select>
+        </div>
+    </div>
+</template>
+
+</odoo>
