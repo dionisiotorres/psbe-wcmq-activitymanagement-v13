@@ -2,6 +2,7 @@ odoo.define('wcmq_website_form.animation', function (require) {
 
     'use strict';
 
+    var ajax = require('web.ajax');
     var core = require('web.core');
     var publicWidget = require('web.public.widget');
 
@@ -17,6 +18,28 @@ odoo.define('wcmq_website_form.animation', function (require) {
 
         checkboxVisibilityCheckSelector: '.form-field[data-toggle="invisibility-checkbox"] .o_website_form_input[type="checkbox"]',
 
+        willStart: function () {
+            var self = this;
+
+            this.eduPartnersByCountry = (odoo.wcmq_website_form || {}).edu_partners_by_country;
+
+            var prom;
+            if (!this.eduPartnersByCountry) {
+                prom = ajax.jsonRpc('/website_form/get_edu_partners_data').then(function (result) {
+                    var $eduPartnerCountrySelect = self.$target.find('select[name="edu_partner_country_id"]');
+                    var t = _.template('<option value="<%- id %>"><%- name %></option>');
+                    _.each(result[0], function (c) {
+                        var $option = $(t(c))
+                        $eduPartnerCountrySelect.append($option);
+                    });
+                    self.eduPartnersByCountry = result[1];
+                });
+            }
+
+            this.$target.find('script#edu_partners_by_country').remove();
+
+            return Promise.all([this._super.apply(this, arguments), prom]);
+        },
         start: function (editable_mode) {
 
             var self = this;
@@ -54,16 +77,11 @@ odoo.define('wcmq_website_form.animation', function (require) {
                 );
             });
 
-            this.eduPartnersByCountry = (odoo.wcmq_website_form || {}).edu_partners_by_country;
-            this.$target.find('script#edu_partners_by_country').remove();
-
-            if (this.eduPartnersByCountry) {
-                this.$eduPartnersFormGroup = this.$target.find('select[name="edu_partner_country_id"]').parents('.form-group');
-                this.$target.find('select[name="edu_partner_country_id"]').on(
-                    'change',
-                    this._onChangeEduPartnerCountry.bind(this)
-                );
-            }
+            this.$eduPartnersFormGroup = this.$target.find('select[name="edu_partner_country_id"]').parents('.form-group');
+            this.$target.find('select[name="edu_partner_country_id"]').on(
+                'change',
+                this._onChangeEduPartnerCountry.bind(this)
+            );
 
             this.$checkboxVisibilityCheckSelectors = this.$target.find(this.checkboxVisibilityCheckSelector);
             this.$checkboxVisibilityCheckSelectors.on('change', this._onChangeVisibilityCheckbox.bind(this));

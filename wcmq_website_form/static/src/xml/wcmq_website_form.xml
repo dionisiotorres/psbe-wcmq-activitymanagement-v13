@@ -18,4 +18,84 @@
     </div>
 </t>
 
+<t t-name="WCMQ_website_form.partnerNameFields">
+    <div class="form-group row form-field">
+        <div class="col-md-3 text-right">
+            <label class="col-form-label" for="partner_firstname">Your Name</label>
+        </div>
+        <div class="col-md-3 form-field o_website_form_required">
+            <input type="text" name="partner_firstname" required=""
+                class="form-control o_website_form_input"
+                placeholder="First name"
+            />
+        </div>
+        <div class="col-md-3 form-field">
+            <input type="text" name="partner_middlename"
+                class="form-control o_website_form_input"
+                placeholder="Middle name"
+            />
+        </div>
+        <div class="col-md-3 form-field o_website_form_required">
+            <input type="text" name="partner_lastname" required=""
+                class="form-control o_website_form_input"
+                placeholder="Last name"
+            />
+        </div>
+    </div>
+</t>
+
+<t t-name="WCMQ_website_form.emailFields">
+    <div class="form-group row form-field o_website_form_required" data-check-input-content="equal">
+        <div class="col-md-3 text-right">
+            <label class="col-form-label" for="partner_email">Your Email</label>
+        </div>
+        <div class="form-field col-md-4 o_website_form_required">
+            <input type="text" name="partner_email" required=""
+                class="form-control o_website_form_input"
+                placeholder="Email"
+            />
+        </div>
+        <div class="form-field offset-md-1 col-md-4 o_website_form_required">
+            <input type="text" name="confirm_partner_email" required=""
+                class="form-control o_website_form_input"
+                placeholder="Confirm email"
+            />
+        </div>
+    </div>
+</t>
+
+<t t-name="WCMQ_website_form.eduPartnerFields">
+    <div class="form-group row form-field">
+        <div class="col-md-3 text-right">
+            <label class="col-form-label" for="edu_partner_county_id">School / University</label>
+        </div>
+        <div class="col-md-3 form-field o_website_form_required">
+            <select name="edu_partner_country_id" required=""
+                class="form-control o_website_form_input"
+                placeholder="Country"
+            >
+                <option value="" disabled="" selected="">Country</option>
+            </select>
+        </div>
+    </div>
+</t>
+
+<t t-name="WCMQ_website_form.expectedGraduationYearField">
+    <div class="form-group row form-field">
+        <div class="col-md-3 text-right">
+            <label class="col-form-label" for="expected_graduation_year">Expected Year of Graduation</label>
+        </div>
+        <div class="col-md-3 o_website_form_required">
+            <select name="expected_graduation_year" required=""
+                class="form-control o_website_form_input"
+            >
+                <t t-set="cy" t-value="moment().year()"/>
+                <t t-foreach="_.range(cy, cy + 7)" t-as="y">
+                    <option t-att-value="y"><t t-esc="y"/></option>
+                </t>
+            </select>
+        </div>
+    </div>
+</t>
+
 </templates>

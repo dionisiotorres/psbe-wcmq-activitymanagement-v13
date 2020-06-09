@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<function name="formbuilder_whitelist" model="ir.model.fields">
+    <value>res.partner</value>
+    <value eval="[
+        'firstname', 'middlename', 'lastname',
+        'edu_partner_id',
+        'expected_graduation_year'
+    ]"/>
+</function>
+
+</odoo>

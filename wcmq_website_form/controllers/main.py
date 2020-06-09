@@ -6,6 +6,19 @@ from odoo.http import request
 
 class WCMQWebsiteForm(http.Controller):
 
+    @http.route('/website_form/get_edu_partners_data', type='json', auth='public', methods=['POST'], website=True)
+    def get_edu_partners_data(self):
+        """
+        """
+
+        return [
+            [{
+                'id': c.id,
+                'name': c.name
+            } for c in self.get_countries()],
+            self.get_edu_partners_by_country()
+        ]
+
     def _edu_partners_domain(self):
         """
         """

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+<t t-name="WCMQ_website_sale.defaultCustomerForm">
+    <t t-call="WCMQ_website_form.partnerNameFields"/>
+    <t t-call="WCMQ_website_form.emailFields"/>
+    <t t-call="WCMQ_website_form.eduPartnerFields"/>
+    <t t-call="WCMQ_website_form.expectedGraduationYearField"/>
+</t>
+
+</templates>
