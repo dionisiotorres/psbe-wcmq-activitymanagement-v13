@@ -2,10 +2,9 @@
 <templates xml:space="preserve">
 
 <t t-name="WCMQ_website_form.eduPartnerSelect">
-    <div class="col-md-6 form-field">
+    <div class="wcmq_edu_partner_select col-md-6 form-field">
         <select name="edu_partner_id" required=""
             class="form-control o_website_form_input"
-            placeholder="Institution"
         >
             <option value="" disabled="" selected="">Institution</option>
             <option value="0">School Not Found</option>
@@ -95,6 +94,146 @@
                 </t>
             </select>
         </div>
+    </div>
+</t>
+
+<t t-name="WCMQ_website_form.eduPartnerEmpty">
+    <div class="wcmq_edu_partner col-md-6 alert alert-warning small">
+        No partner found for the selected country. Please fill information here below.
+    </div>
+</t>
+
+<t t-name="WCMQ_website_form.eduPartnerCreate">
+    <div class="wcmq_edu_partner_create from-group row">
+
+        <div class="col-md-9 offset-md-3 form-group form-field o_website_form_required">
+            <input type="text" name="edu_partner_name" required=""
+                class="form-control o_website_form_input"
+                placeholder="Name"
+            />
+        </div>
+
+        <div class="col-md-9 offset-md-3 form-group form-field">
+            <input type="text" name="edu_partner_street"
+                class="form-control o_website_form_input"
+                placeholder="Address line 1"
+            />
+        </div>
+
+        <div class="col-md-9 offset-md-3 form-group form-field">
+            <input type="text" name="edu_partner_street2"
+                class="form-control o_website_form_input"
+                placeholder="Address line 2"
+            />
+        </div>
+
+        <div class="row no-gutters col-md-9 offset-md-3 form-group form-field">
+            <div class="col-md form-field o_website_form_required">
+                <input type="text" name="edu_partner_city" required=""
+                    class="form-control o_website_form_input"
+                    placeholder="City"
+                />
+            </div>
+            <div class="col-md form-field">
+                <input type="text" name="edu_partner_zip"
+                    class="form-control o_website_form_input"
+                    placeholder="Zip code"
+                />
+            </div>
+        </div>
+
+        <div class="row no-gutters col-md-9 offset-md-3 form-group form-field">
+            <div class="col-md form-field o_website_form_required">
+                <select type="text" name="edu_partner_country_id" required="" disabled=""
+                    t-att-value="id"
+                    class="form-control o_website_form_input"
+                >
+                    <option t-att-value="id"><t t-esc="name"/></option>
+                </select>
+            </div>
+            <div class="col-md form-field">
+                <input type="text" name="edu_partner_state_id"
+                    class="form-control o_website_form_input"
+                    placeholder="State / Province"
+                />
+            </div>
+        </div>
+
+        <div class="col-md-9 offset-md-3 form-group form-field">
+            <input type="text" name="edu_partner_wesite"
+                class="form-control o_website_form_input"
+                placeholder="Website"
+            />
+        </div>
+
+        <div class="col-md-9 offset-md-3 form-group form-field">
+            <input type="text" name="edu_partner_email"
+                class="form-control o_website_form_input"
+                placeholder="Email"
+            />
+        </div>
+
+        <div class="col-md-9 offset-md-3 form-group form-field o_website_form_required">
+            <input type="text" name="edu_partner_phone" required=""
+                class="form-control o_website_form_input"
+                placeholder="Phone"
+            />
+        </div>
+
+        <div class="row no-gutters col-md-9 offset-md-3 form-group form-field">
+            <div class="col-md form-field">
+                <select type="text" name="edu_partner_type"
+                    t-att-value="id"
+                    class="form-control o_website_form_input"
+                >
+                    <option value="" disabled="" selected="">Type</option>
+                    <option value="1">Type 1</option>
+                    <option value="2">Type 2</option>
+                    <option value="3">Type 3</option>
+                    <option value="4">Type 4</option>
+                </select>
+            </div>
+            <div class="col-md form-field">
+                <select type="text" name="edu_partner_class_type"
+                    t-att-value="id"
+                    class="form-control o_website_form_input"
+                >
+                    <option value="" disabled="" selected="">Class</option>
+                    <option value="1">Class 1</option>
+                    <option value="2">Class 2</option>
+                    <option value="3">Class 3</option>
+                    <option value="4">Class 4</option>
+                </select>
+            </div>
+            <div class="col-md form-field">
+                <select type="text" name="edu_partner_level"
+                    t-att-value="id"
+                    class="form-control o_website_form_input"
+                >
+                    <option value="" disabled="" selected="">Level</option>
+                    <option value="1">Level 1</option>
+                    <option value="2">Level 2</option>
+                    <option value="3">Level 3</option>
+                    <option value="4">Level 4</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row no-gutters col-md-9 offset-md-3 form-group form-field">
+            <div class="col-md form-field o_website_form_required">
+                <input type="text" name="edu_partner_from" required=""
+                    class="form-control o_website_form_input o_website_form_date"
+                    placeholder="Attended from"
+                />
+            </div>
+            <div class="col-md form-field o_website_form_required">
+                <input type="text" name="edu_partner_to" required=""
+                    class="form-control o_website_form_input o_website_form_date"
+                    placeholder="Attended to"
+                />
+            </div>
+        </div>
+
     </div>
 </t>
 

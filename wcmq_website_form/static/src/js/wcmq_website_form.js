@@ -150,27 +150,59 @@ odoo.define('wcmq_website_form.animation', function (require) {
                 'WCMQ_website_form.eduPartnerSelect',
                 countryData
             ));
+            $eduPartnerSelect.on('change', this._onChangeEduPartnerSelect.bind(this));
             this.$eduPartnersFormGroup.append($eduPartnerSelect);
         },
-        _showEduCountryFallback: function () {
-            console.warn('NotImplemented');
+        _showEduCountryFallback: function (countryData, showWarning) {
+            var $eduPartnerCreate = $(qweb.render(
+                'WCMQ_website_form.eduPartnerCreate',
+                countryData
+            ));
+            if (!!showWarning) {
+                this.$eduPartnersFormGroup.append($(qweb.render('WCMQ_website_form.eduPartnerEmpty')));
+            }
+            $eduPartnerCreate.insertAfter(this.$eduPartnersFormGroup);
         },
 
         _onChangeEduPartnerCountry: function (ev) {
             ev.stopPropagation();
 
-            var $partnerSelect = this.$target.find('select[name="edu_partner_id"]')
+            this.$target.find('.wcmq_edu_partner, .wcmq_edu_partner_select, .wcmq_edu_partner_create').remove();
+
+            var $partnerSelect = this.$target.find('select[name="edu_partner_id"]');
             $partnerSelect.parents('.form-field').remove();
 
-            var $countrySelect = this.$target.find('select[name="edu_partner_country_id"]')
+            var $countrySelect = $(ev.currentTarget);
 
-            var selectedCountryID = parseInt($countrySelect.find('option:selected').val(), 10);
+            var $selectedOption = $countrySelect.find('option:selected');
+            var selectedCountryID = parseInt($selectedOption.val(), 10);
+
             var countryData = this.eduPartnersByCountry[selectedCountryID];
 
             if (!countryData) {
-                this._showEduCountryFallback();
+                this._showEduCountryFallback({
+                    id: selectedCountryID,
+                    name: $selectedOption.text()
+                }, true);
             } else {
                 this._showCountryEduPartners(countryData);
+            }
+        },
+        _onChangeEduPartnerSelect: function (ev) {
+            ev.stopPropagation();
+
+            this.$target.find('.wcmq_edu_partner_create').remove();
+
+            var $partnerSelect = $(ev.currentTarget);
+            var $selectedOption = $partnerSelect.find('option:selected');
+
+            if ($selectedOption.val() == '0') {
+                var $countrySelect = this.$target.find('select[name="edu_partner_country_id"]');
+                var $selectedCountryOption = $countrySelect.find('option:selected');
+                this._showEduCountryFallback({
+                    id: parseInt($selectedCountryOption.val(), 10),
+                    name: $selectedCountryOption.text()
+                });
             }
         },
         _onChangeVisibilityCheckbox: function (ev) {

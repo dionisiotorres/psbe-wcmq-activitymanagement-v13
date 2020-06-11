@@ -6,6 +6,7 @@ WCM Qatar Website Form Customizations
 =====================================
 
 - Task 2244996: Website form specificities
+- Task 2257929: Website form school case
     """,
     'version': '1.0',
     'author': "Odoo SA",
