@@ -161,7 +161,10 @@ odoo.define('wcmq_website_form.animation', function (require) {
             if (!!showWarning) {
                 this.$eduPartnersFormGroup.append($(qweb.render('WCMQ_website_form.eduPartnerEmpty')));
             }
-            $eduPartnerCreate.insertAfter(this.$eduPartnersFormGroup);
+            var datePickerOptions = this._getDatePickerOptions();
+            $.when($eduPartnerCreate.insertAfter(this.$eduPartnersFormGroup)).then(function () {
+                $eduPartnerCreate.find('.o_website_form_date').datetimepicker(datePickerOptions);
+            });
         },
 
         _onChangeEduPartnerCountry: function (ev) {

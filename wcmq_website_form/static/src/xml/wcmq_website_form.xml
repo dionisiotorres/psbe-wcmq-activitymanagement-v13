@@ -221,14 +221,16 @@
 
         <div class="row no-gutters col-md-9 offset-md-3 form-group form-field">
             <div class="col-md form-field o_website_form_required">
-                <input type="text" name="edu_partner_from" required=""
-                    class="form-control o_website_form_input o_website_form_date"
+                <input type="text" id="eduPartnerfromDatePicker" name="edu_partner_from" required=""
+                    data-toggle="datetimepicker" data-target="#eduPartnerfromDatePicker"
+                    class="form-control datetimepicker-input o_website_form_input o_website_form_date"
                     placeholder="Attended from"
                 />
             </div>
             <div class="col-md form-field o_website_form_required">
-                <input type="text" name="edu_partner_to" required=""
-                    class="form-control o_website_form_input o_website_form_date"
+                <input type="text" id="eduPartnerToDatePicker" name="edu_partner_to" required=""
+                    data-toggle="datetimepicker" data-target="#eduPartnerToDatePicker"
+                    class="form-control datetimepicker-input o_website_form_input o_website_form_date"
                     placeholder="Attended to"
                 />
             </div>
